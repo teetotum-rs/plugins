@@ -1,0 +1,57 @@
+{
+  "format": 1,
+  "plugins": [
+    {
+      "name": "HID remote",
+      "summary": "remote for the phone's player",
+      "version": "0.0.0",
+      "abi": 1,
+      "rights": [
+        "HID",
+        "KNOB"
+      ],
+      "id": "41a9ad2d2290788d",
+      "key": "f6aca85edc3547d4e2e359168f5ba1d15d3c5e886d2b2a44301697e8a0abaaba",
+      "size": 1381,
+      "sha256": "ce9885d8ad7125815d665bc50088b2f461a57cd3a6b40129472417f7e6e66c0c",
+      "url": "https://raw.githubusercontent.com/teetotum-rs/firmware/v0.1.0/firmware/assets/plugins/hid-remote.wasm",
+      "source": "https://github.com/teetotum-rs/firmware/tree/v0.1.0/plugins/hid-remote",
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "Teetotum",
+      "summary": "a die of 2 to 256 sides",
+      "version": "0.0.0",
+      "abi": 1,
+      "rights": [
+        "KNOB",
+        "RANDOM"
+      ],
+      "id": "6799220a4230b177",
+      "key": "f6aca85edc3547d4e2e359168f5ba1d15d3c5e886d2b2a44301697e8a0abaaba",
+      "size": 2737,
+      "sha256": "c5ac0f92387c74390f51cfc4dfd58d2b8c3daa3af2b047559cf3a6f4ca2e6195",
+      "url": "https://raw.githubusercontent.com/teetotum-rs/firmware/v0.1.0/firmware/assets/plugins/teetotum-plugin.wasm",
+      "source": "https://github.com/teetotum-rs/firmware/tree/v0.1.0/plugins/teetotum-plugin",
+      "license": "MIT OR Apache-2.0"
+    },
+    {
+      "name": "Nearby",
+      "summary": "Wi-Fi and Bluetooth around you",
+      "version": "0.0.0",
+      "abi": 1,
+      "rights": [
+        "KNOB",
+        "RADIO",
+        "HAPTIC"
+      ],
+      "id": "a699c0784d62a9df",
+      "key": "f6aca85edc3547d4e2e359168f5ba1d15d3c5e886d2b2a44301697e8a0abaaba",
+      "size": 7266,
+      "sha256": "d0149637e26e0ba88a6e51fb192bd425d5530fb8b35b2cf2dd7f8be7eb27b6c0",
+      "url": "https://raw.githubusercontent.com/teetotum-rs/firmware/v0.1.0/firmware/assets/plugins/nearby.wasm",
+      "source": "https://github.com/teetotum-rs/firmware/tree/v0.1.0/plugins/nearby",
+      "license": "MIT OR Apache-2.0"
+    }
+  ]
+}

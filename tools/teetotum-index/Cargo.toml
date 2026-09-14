@@ -1,0 +1,18 @@
+[package]
+description  = "Builds and checks entries of the teetotum plugin index"
+edition      = "2024"
+license      = "MIT OR Apache-2.0"
+name         = "teetotum-index"
+publish      = false
+rust-version = "1.88"
+version      = "0.1.0"
+
+[dependencies]
+serde         = { version = "1", features = ["derive"] }
+serde_json    = "1"
+sha2          = "0.10"
+teetotum-pack = "0.1"
+ureq          = "3"
+
+# Its own workspace: a host tool next to faces that build for wasm32v1-none.
+[workspace]

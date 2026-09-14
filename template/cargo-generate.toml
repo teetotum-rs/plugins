@@ -1,0 +1,15 @@
+[template]
+cargo_generate_version = ">=0.18.0"
+ignore = ["target"]
+
+[placeholders.face_name]
+type    = "string"
+prompt  = "Name on the glass (1 to 20 bytes)"
+regex   = "^.{1,20}$"
+default = "My face"
+
+[placeholders.summary]
+type    = "string"
+prompt  = "Line under the name at home (at most 32 bytes)"
+regex   = "^.{0,32}$"
+default = "a face of my own"

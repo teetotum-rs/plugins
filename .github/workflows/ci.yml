@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  faces:
+    name: Faces and template
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32v1-none
+          components: clippy, rustfmt
+      - uses: taiki-e/install-action@v2
+        with:
+          tool: cargo-generate
+      - name: Install teetotum-pack
+        run: cargo install teetotum-pack --features cli --locked
+      - name: Generate a face from the template
+        run: >
+          cargo generate --path template --destination faces --name template-probe --vcs none
+          --define face_name="Template probe" --define summary="generated in CI"
+      # Signed with a key made for this run only: CI proves a face builds and passes the loader's
+      # checks. Releases are signed by their authors.
+      - name: Format, lint, build, sign and check every face
+        env:
+          TEETOTUM_KEY: ${{ runner.temp }}/throwaway.pem
+        run: |
+          for face in faces/*/; do
+            echo "::group::$face"
+            (cd "$face" && cargo fmt --check && cargo clippy --release -- -D warnings && sh build.sh)
+            echo "::endgroup::"
+          done
+
+  index:
+    name: Index
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+      - name: Format and lint teetotum-index
+        working-directory: tools/teetotum-index
+        run: cargo fmt --check && cargo clippy --locked -- -D warnings
+      - name: Check every entry against its module
+        run: cargo run --locked --quiet --manifest-path tools/teetotum-index/Cargo.toml -- check index.json

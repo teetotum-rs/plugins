@@ -1,0 +1,24 @@
+[package]
+edition      = "2024"
+license      = "MIT OR Apache-2.0"
+name         = "counter"
+publish      = false
+rust-version = "1.88"
+version      = "0.1.0"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+teetotum-face = "0.1"
+
+# A face is loaded into a 64 KiB page on a microcontroller: every byte counts.
+[profile.release]
+codegen-units = 1
+lto           = true
+opt-level     = "z"
+panic         = "abort"
+strip         = true
+
+# Its own workspace, so that the face builds alone wherever it is copied to.
+[workspace]
