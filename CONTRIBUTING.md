@@ -26,11 +26,19 @@ entry by hand; the tool reads it from the module:
 
 ```sh
 cargo run --manifest-path tools/teetotum-index/Cargo.toml -- \
-    entry my_face.wasm --url https://.../my_face.wasm --source https://github.com/you/my-face
+    entry my_face.wasm --url https://.../my_face.wasm --source https://github.com/you/my-face \
+    --tag media --tag remote
 cargo run --manifest-path tools/teetotum-index/Cargo.toml -- check index.json
 ```
 
 `--license` defaults to `MIT OR Apache-2.0`. Open a pull request with the new entry.
+
+**Tags** let the [plugin page](https://teetotum-rs.github.io/firmware/plugins.html) filter the
+catalogue. Give each one with `--tag`: a lowercase word of letters, digits and dashes, at most 16
+long, at most five per face. Pick what a visitor would look for (`media`, `game`, `radio`) and
+reuse tags that are already in the index. Tags live in the index only, so changing them needs no
+new build and no new signature. `bundled` is not yours to set: the tool adds it to the faces the
+firmware ships, and `check` refuses any other entry that carries it.
 
 **An update** replaces the entry: a new version, URL, size and hash, but the same key. A module
 signed with another key is another face to the device, with its own id and its own settings.

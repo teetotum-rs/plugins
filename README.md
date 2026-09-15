@@ -38,6 +38,7 @@ show a face before fetching it:
 | Field | Meaning |
 |---|---|
 | `name`, `summary`, `version`, `abi`, `rights` | from the manifest |
+| `tags` | optional; short words the author chose, plus `bundled` for a face the firmware ships |
 | `id` | the eight bytes the device knows the face by: key and name together |
 | `key` | the author's Ed25519 public key; an update must be signed with the same one |
 | `size`, `sha256` | of the signed module |
@@ -45,6 +46,7 @@ show a face before fetching it:
 | `source`, `license` | where its code is, and under what terms |
 
 CI fetches every module, verifies its signature and fails on any field that no longer matches.
+`bundled` follows from the URL, a module in the firmware repository, and no entry can declare it.
 The first entries are the faces the firmware ships; their code lives in the firmware repository.
 
 ## Contributing

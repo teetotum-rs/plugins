@@ -4,6 +4,11 @@
     {
       "name": "HID remote",
       "summary": "remote for the phone's player",
+      "tags": [
+        "bundled",
+        "media",
+        "remote"
+      ],
       "version": "0.0.0",
       "abi": 1,
       "rights": [
@@ -21,6 +26,10 @@
     {
       "name": "Teetotum",
       "summary": "a die of 2 to 256 sides",
+      "tags": [
+        "bundled",
+        "game"
+      ],
       "version": "0.0.0",
       "abi": 1,
       "rights": [
@@ -38,6 +47,10 @@
     {
       "name": "Nearby",
       "summary": "Wi-Fi and Bluetooth around you",
+      "tags": [
+        "bundled",
+        "radio"
+      ],
       "version": "0.0.0",
       "abi": 1,
       "rights": [

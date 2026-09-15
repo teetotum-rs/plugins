@@ -47,8 +47,8 @@ jobs:
       - uses: dtolnay/rust-toolchain@stable
         with:
           components: clippy, rustfmt
-      - name: Format and lint teetotum-index
+      - name: Format, lint and test teetotum-index
         working-directory: tools/teetotum-index
-        run: cargo fmt --check && cargo clippy --locked -- -D warnings
+        run: cargo fmt --check && cargo clippy --locked -- -D warnings && cargo test --locked
       - name: Check every entry against its module
         run: cargo run --locked --quiet --manifest-path tools/teetotum-index/Cargo.toml -- check index.json
